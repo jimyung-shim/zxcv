@@ -58,10 +58,68 @@ DataFrame 행렬을 전치시켜서 리턴
 
 
 `<DataFrame 객체>.sort_values(by='<열 이름>') : DataFrame` 파라미터로 들어온 열을 기준으로 전체 DataFrame 오름차순으로 행정렬
-
 `<DataFrame 객체>.sort_values(by='<열 이름>', ascending=False) : DataFrame` 파라미터로 들어온 열을 기준으로 전체 DataFrame 내림차순으로 행정렬
 
 
+`<Series 객체> / <숫자 'a'>  -> Series`  Series 각 원소들을 a로 나눈다
+
+`<Series 객체> + or - or * or / <Series 객체>  -> Series`   동일하게 대응되는 인덱스들끼리 연산을 수행한다. 단 한 쪽이라도 일치하지 않는 인덱스가 있을 경우 Nan으로 처리 
+
+`<Series 객체>.add(<또 다른 Series 객체>, fill_value=<Nan을 대체할 값>) : Series` 
+`<Series 객체>.sub(<또 다른 Series 객체>, fill_value=<Nan을 대체할 값>) : Series` 
+`<Series 객체>.mul(<또 다른 Series 객체>, fill_value=<Nan을 대체할 값>) : Series` 
+`<Series 객체>.div(<또 다른 Series 객체>, fill_value=<Nan을 대체할 값>) : Series` 
+시리즈 객체끼리 사칙 연산을 수행한다.
+
+`seaborn.load_dataset('<데이터 파일 이름>') : DataFrame`
+
+`<DataFrame 객체>.head() : DataFrame` 기존 DataFrame 객체의 첫 5행 까지의 데이터만 담긴 DataFrame 객체를 리턴
+
+`<DataFrame 객체>.tail() : DataFrame` 기존 DataFrame 객체의 마지믹 5행의 데이터만 담긴 DataFrame 객체를 리턴
+
+
+`pandas.read_csv('<파일 이름>', header=None) : DataFrame`  파라미터로 받아온 파일 이름에 해당하는 파일로부터 데이터를 가져와 DataFrame에 채워넣어서 리턴한다. 
+header=None은 csv 파일의 첫 행을 열 이름으로 삼지 말라는 소리다. 이 옵션을 빼먹을 경우 csv 파일의 첫 행이 열의 이름으로 자동 설정되어버린다. 
+
+`pandas.read_excel('<파일 이름>', engine='openpyxl') : DataFrame`   엑셀 파일을 읽어서 그 데이터들을 DataFrame 객체에 담아서 리턴한다. 엑셀 파일을 다루기 위해서 엑셀 관련 파이썬 라이브러리를 사용하는 옵션인 engine='openpyxl' 을 파라미터 옵션으로 넣는다.
+
+`<DataFrame 객체>.shape  -> tuple`  (행의 갯수, 열의 갯수)형태의 튜플 데이터다
+
+`<DataFrame 객체>.info() : None` DataFrame 객체의 정보들을 출력한다.
+
+`<DataFrame 객체>.describe() : DataFrame` DataFrame 의 각 열들에 대한 데이터들의 기술 통계 정보가 담긴 DataFrame 객체 리턴
+
+`<DataFrame 객체>.dtypes : Series`  각 열(column)의 “전체적인 자료형(dtype)”을 나타내는 Series를 리턴한다.
+
+`<DataFrame 객체>.count() : Series` DataFrame 객체의 각 열의 데이터 갯수 정보를 담고있는 Series 객체를 리턴한다.
+
+`<DataFrame 객체>.value_counts() : Series`  전체 DataFrame 객체의 각 행이 몇번 나타났는지에 대한 정보가 담긴 Series를 리턴
+
+`<DataFrame 객체>.max() : Series` 각 열의 데이터에 대한 최대값 정보들이 담긴 Series 리턴
+
+`<DataFrame 객체>.min() : Series` 각 열의 데이터에 대한 최소값 정보들이 담긴 Series 리턴
+
+`<DataFrame 객체>.mean() : Series` 각 열의 데이터에 대한 평균값 정보들이 담긴 Series 리턴
+
+`<DataFrame 객체>.median() : Series` 각 열의 데이터에 대한 중앙값 정보들이 담긴 Series 리턴
+
+`<DataFrame 객체>.std() : Series` 각 열의 데이터에 대한 표준편차 정보들이 담긴 Series 리턴
+
+`<DataFrame 객체>.corr() : DataFrame` 열과 열 사이의 상관관계를 계산하여 DataFrame 전체의 상관계수 행렬이 담긴 DataFrame을 리턴.
+
+`<DataFrame 객체>.plot() : PlotAccessor`   선 그래프 그리기
+파라미터 옵션 `kind='hist'` 을 넣어서 히스토그램 그리기
+파라미터 옵션 `kind='box'` 를 넣어서 박스 플롯 그리기 
+
+`<DataFrame 객체>.T   ->  DataFrame`   기존 데이터프레임 객체의 전치행렬
+
+`<Seires 객체>.apply(function)`    Series.apply(func) = Series의 모든 원소를 하나씩 func에 넣어서 나온 결과를 새로운 Series로 반환하는 메서드
+
+`<DataFrame 객체>.applymap(function)` DataFrame 모든 원소에 함수 적용
+
+`<DataFrame 객체>.isnull() : DataFrame` 각 원소가 null 인지 아닌지에 대한 bool 값이 담겨있는 DataFrame 객체 리턴
+
+`<Series 객체>.isnull() : Series` 각 원소가 null 인지 아닌지에 대한 bool 값이 담겨있는 Series 객체 리턴
 
 
 
