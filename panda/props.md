@@ -12,7 +12,7 @@
 파라미터 옵션: `index=`, `columns=`
 
 
-`<DataFrame 객체>.index' type = 행 인덱스들의 시퀀스 자료
+`<DataFrame 객체>.index` type = 행 인덱스들의 시퀀스 자료
 
 
 `<DataFrame 객체>.columns` type = 열 이름들의 시퀀스 자료
