@@ -58,6 +58,7 @@ DataFrame 행렬을 전치시켜서 리턴
 
 
 `<DataFrame 객체>.sort_values(by='<열 이름>') : DataFrame` 파라미터로 들어온 열을 기준으로 전체 DataFrame 오름차순으로 행정렬
+
 `<DataFrame 객체>.sort_values(by='<열 이름>', ascending=False) : DataFrame` 파라미터로 들어온 열을 기준으로 전체 DataFrame 내림차순으로 행정렬
 
 
