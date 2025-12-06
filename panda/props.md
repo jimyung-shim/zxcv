@@ -2,23 +2,27 @@
 파라미터 옵션: `index=` 
 
 
-`<Series 객체>.index` type = RangeIndex(start=0, stop=5, step=1)
+`<Series 객체>.index` type = pandas.Index
 
 
-`<Series 객체>.values` type = Series 자료형 안에 있는 아이템들로 이루어진 시퀀스 자료형
+`<Series 객체>.values` type = numpy.ndarray
+Series 자료형 안에 있는 아이템들로 이루어진 시퀀스 자료형(Numpy 배열)
 
 
 `pandas.DataFrame() : DataFrame 자료형`  type = <class 'pandas.core.frame.DataFrame'>
 파라미터 옵션: `index=`, `columns=`
 
 
-`<DataFrame 객체>.index` type = 행 인덱스들의 시퀀스 자료
+`<DataFrame 객체>.index` type = pandas.Index
+행 인덱스들의 시퀀스 자료(Row index들의 Index 객체)
 
 
-`<DataFrame 객체>.columns` type = 열 이름들의 시퀀스 자료
+`<DataFrame 객체>.columns` type = pandas.Index
+열 이름들의 시퀀스 자료(Column name들의 Index 객체)
 
 
-`<DataFrame 객체>.rename() : None`  
+`<DataFrame 객체>.rename() : DataFrame`
+`<DataFrame 객체>.rename(..., inplace=True) : None`  
 파라미터 옵션을 `columns=`로 하여 열 이름들을 바꾸거나, `index=`로 하여 행 인덱스 이름들을 변경할 수 있다. 
 
 
@@ -63,7 +67,9 @@ DataFrame 행렬을 전치시켜서 리턴
 
 `<Series 객체> / <숫자 'a'>  -> Series`  Series 각 원소들을 a로 나눈다
 
-`<Series 객체> + or - or * or / <Series 객체>  -> Series`   동일하게 대응되는 인덱스들끼리 연산을 수행한다. 단 한 쪽이라도 일치하지 않는 인덱스가 있을 경우 Nan으로 처리 
+`<Series 객체> + or - or * or / <Series 객체>  -> Series`   
+각 인덱스 라벨별로 대응되는 값끼리 연산한다.
+어떤 인덱스 라벨에 대해 한쪽 Series에 값이 없으면 그 인덱스의 결과가 NaN이 된다. 
 
 `<Series 객체>.add(<또 다른 Series 객체>, fill_value=<Nan을 대체할 값>) : Series` 
 `<Series 객체>.sub(<또 다른 Series 객체>, fill_value=<Nan을 대체할 값>) : Series` 
@@ -107,15 +113,15 @@ header=None은 csv 파일의 첫 행을 열 이름으로 삼지 말라는 소리
 
 `<DataFrame 객체>.corr() : DataFrame` 열과 열 사이의 상관관계를 계산하여 DataFrame 전체의 상관계수 행렬이 담긴 DataFrame을 리턴.
 
-`<DataFrame 객체>.plot() : PlotAccessor`   선 그래프 그리기
+`<DataFrame 객체>.plot() : matplotlib.axes.Axes`   선 그래프 그리기
 파라미터 옵션 `kind='hist'` 을 넣어서 히스토그램 그리기
 파라미터 옵션 `kind='box'` 를 넣어서 박스 플롯 그리기 
 
 `<DataFrame 객체>.T   ->  DataFrame`   기존 데이터프레임 객체의 전치행렬
 
-`<Seires 객체>.apply(function)`    Series.apply(func) = Series의 모든 원소를 하나씩 func에 넣어서 나온 결과를 새로운 Series로 반환하는 메서드
+`<Seires 객체>.apply(function) : Series`    Series.apply(func) = Series의 모든 원소를 하나씩 func에 넣어서 나온 결과를 새로운 Series로 반환하는 메서드
 
-`<DataFrame 객체>.applymap(function)` DataFrame 모든 원소에 함수 적용
+`<DataFrame 객체>.applymap(function) : DataFrame` DataFrame 모든 원소에 함수 적용
 
 `<DataFrame 객체>.isnull() : DataFrame` 각 원소가 null 인지 아닌지에 대한 bool 값이 담겨있는 DataFrame 객체 리턴
 
