@@ -121,11 +121,27 @@ header=None은 csv 파일의 첫 행을 열 이름으로 삼지 말라는 소리
 
 `<Seires 객체>.apply(function) : Series`    Series.apply(func) = Series의 모든 원소를 하나씩 func에 넣어서 나온 결과를 새로운 Series로 반환하는 메서드
 
-`<DataFrame 객체>.applymap(function) : DataFrame` DataFrame 모든 원소에 함수 적용
+`<DataFrame 객체>.applymap(function) : DataFrame` DataFrame 개별 원소에 특정 함수 매핑
 
 `<DataFrame 객체>.isnull() : DataFrame` 각 원소가 null 인지 아닌지에 대한 bool 값이 담겨있는 DataFrame 객체 리턴
 
 `<Series 객체>.isnull() : Series` 각 원소가 null 인지 아닌지에 대한 bool 값이 담겨있는 Series 객체 리턴
+
+`<DataFrame 객체>.pipe(function)  :  Dataframe | Series | 임의의 값` function(<DataFrame 객체>) 와 의미가 같으며 apply() 와는 달리 데이터프레임 객체 통째로 function()의 파라미터로 넘긴다.
+
+`<DataFrame 객체>.groupby(['<기준이 되는 열 이름>'])  :  DataFrameGroupBy`  해당 열의 값이 같은 행들을 그룹으로 정의해 두고, 실제 그룹 데이터는 계산하지 않은 채 그룹 연산을 위한 DataFrameGroupBy 객체를 리턴한다.
+
+
+`<DataFrameGroupBy 객체>.get_group('<특정 값>')  :  DataFrame `  해당 값으로 묶인 그룹을 데이터프레임으로 리턴한다.
+
+
+`<DataFrame 객체>.fillna(value) :  None`  NaN을 value로 채우기
+
+`<DataFrame 열 객체>.isin(추출 값의 리스트)  :  Series`  각 인덱스마다 “그 행의 값이 리스트 안에 존재하는지(True/False)”를 판단하여 Series로 반환한다.
+
+`<DataFrameGroupBy 객체>.agg(function)  :  DataFrame`  그룹별로 어떤 함수를 적용해서 요약표(DataFrame)를 만드는 메서드
+
+
 
 
 
